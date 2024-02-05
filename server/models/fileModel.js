@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const fileSchema = mongoose.Schema(
     {
-        name: {
+        filename: {
             type: String,
             required: true,
         },
 
-        data: {
+        filedata: {
             type: String,
             required: true,
         },

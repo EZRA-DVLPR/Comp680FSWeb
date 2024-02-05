@@ -3,24 +3,21 @@ import  { modelFile } from '../models/fileModel.js';
 
 const router = express.Router();
 
-
-
-
 // route for save a new file in db
 router.post('/', async (req, res) => {
     try {
         
         //check if the user has send the proper data specified
-        if (!req.body.name || !req.body.data) {
+        if (!req.body.filename || !req.body.filedata) {
             return res.status(400).send({
-                message: 'Send all required fields: name, data',
+                message: 'Data received was incomplete. Data Addition Cancelled. Send all required fields: filename, filedata',
             });
         }
         
         //make a new instance of the file using mongo schema
         const newFile = {
-            name: req.body.name,
-            data: req.body.data,
+            filename: req.body.filename,
+            filedata: req.body.filedata,
         };
 
         //send data and wait for confirmation
@@ -34,10 +31,6 @@ router.post('/', async (req, res) => {
         res.status(500).send({message: err.message})
     }
 });
-
-
-
-
 
 // route for get all files from db
 router.get('/', async (req, res) => {
@@ -54,10 +47,6 @@ router.get('/', async (req, res) => {
         res.status(500).send({message: err.message});
     }
 });
-
-
-
-
 
 // route to get file with given id
 router.get('/:id', async (req, res) => {
@@ -76,19 +65,14 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-
-
-
-
 // route to update data within the db
-
 router.put('/:id', async (req, res) => {
     try {
 
         //check if the user has send the proper data specified
-        if (!req.body.name || !req.body.data) {
+        if (!req.body.filename || !req.body.filedata) {
             return res.status(400).send({
-                message: 'Send all required fields: name, data',
+                message: 'Data received was incomplete. Data Replacement Cancelled. Send all required fields: filename, filedata',
             });
         }
 
@@ -110,7 +94,6 @@ router.put('/:id', async (req, res) => {
 
 
 // delete a file by id
-
 router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;

@@ -52,10 +52,10 @@ const Home = () => {
                                     {index + 1}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {file.name}
+                                    {file.filename}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                    {file.data}
+                                    {file.filedata}
                                 </td>
                                 {/*//each data member w/in db can be shown here using the outline as above
 
