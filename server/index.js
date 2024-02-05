@@ -1,14 +1,27 @@
-import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import  { modelFile } from './models/fileModel.js';
+import express from 'express';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import filesRoute from './routes/fileRoute.js';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
 
 //middleware for parsing request body
 app.use(express.json());
+
+//Middleware to handle CORS policy
+//Style 1: Allow all origins with default of cors (*)
+//app.use(cors());
+
+//style 2: Allow custom origins
+app.use(
+    cors({
+        origin: 'http://localhost:5555',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type'],
+    })
+);
 
 //basic load page with content
 app.get('/', (req, res) => {
@@ -34,3 +47,14 @@ mongoose.connect(process.env.MONGO_URI).then(() =>{
 }).catch((err) =>{
     console.log(err);
 });
+
+//CORS Policy:
+/*
+
+Cross Origin Resource Sharing
+
+Server can check origins, methods, and headers.
+
+
+
+*/
