@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import CreateFile from './pages/CreateFiles';
-import DeleteFile from './pages/DeleteFile';
+import ShowFile from './pages/ShowFile';
 import EditFile from './pages/EditFile';
 import DeleteFile from './pages/DeleteFile';
 
