@@ -37,11 +37,11 @@ const ShowFile = () => {
             </div>
             <div className='my-4'>
               <span className='text-xl mr-4 text-gray-500'>Filename</span>
-              <span>{loadedFile.name}</span>
+              <span>{loadedFile.filename}</span>
             </div>
             <div className='my-4'>
               <span className='text-xl mr-4 text-gray-500'>Data</span>
-              <span>{loadedFile.data}</span>
+              <span>{loadedFile.filedata}</span>
             </div>
 
             {/* Obtain the metadata from the file */}
