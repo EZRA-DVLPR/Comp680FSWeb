@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
+import { useSnackbar } from 'notistack';
 
 const CreateFiles = () => {
 
@@ -13,6 +14,9 @@ const CreateFiles = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  //snackbar for alerts
+  const { enqueueSnackbar } = useSnackbar();
+
   const handleSaveFile = () => {
     const data = {
       filename,
@@ -21,10 +25,12 @@ const CreateFiles = () => {
     setLoading(true);
     axios.post('http://localhost:5555/files', data).then(() => {
       setLoading(false);
+      enqueueSnackbar('File added Successfully', { variant: 'success'});
       navigate('/');
     }).catch((err) => {
       setLoading(false);
-      alert('An Error Occurred. Please Check Console');
+      //alert('An Error Occurred. Please Check Console');
+      enqueueSnackbar('Error', {variant: 'error'});
       console.log(err);
     });
   };

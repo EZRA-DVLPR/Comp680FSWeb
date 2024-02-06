@@ -3,20 +3,26 @@ import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 const DeleteFile = () => {
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const { enqueueSnackbar } = useSnackbar();
+
   const handleDeleteFile = () => {
     setLoading(true);
     axios.delete(`http://localhost:5555/files/${id}`).then(() => {
       setLoading(false);
+      enqueueSnackbar('File Deleted successfully', {variant: 'success'});
       navigate('/');
     }).catch((err) => {
       setLoading(false);
-      alert('An error occured. Please Check Console.');
+      //alert('An error occured. Please Check Console.');
+      enqueueSnackbar('Error', {variant: 'erorr'});
       console.log(err);
     });
   };

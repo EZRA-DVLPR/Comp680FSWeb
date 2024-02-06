@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
+import { useSnackbar } from 'notistack';
 
 const EditFile = () => {
 
@@ -13,6 +14,9 @@ const EditFile = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const { enqueueSnackbar } = useSnackbar();
+
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:5555/files/${id}`).then((res) => {
@@ -34,10 +38,12 @@ const EditFile = () => {
     setLoading(true);
     axios.put(`http://localhost:5555/files/${id}`, data).then(() => {
       setLoading(false);
+      enqueueSnackbar('File edited successfully', {variant: 'success'});
       navigate('/');
     }).catch((err) => {
       setLoading(false);
-      alert('An Error Occurred. Please Check Console');
+      //alert('An Error Occurred. Please Check Console');
+      enqueueSnackbar('Error', {variant: 'error'});
       console.log(err);
     });
   };
