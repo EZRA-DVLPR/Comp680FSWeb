@@ -52,6 +52,26 @@ The "client" folder runs the frontend of the app
 
 The "server" folder runs the backend of the app
 
+# Installation
+
+run the following commands in order to set up the client and server properly.
+
+## For client:
+```
+cd ./client
+npm install
+```
+
+## For server:
+```
+cd ./server
+npm install
+```
+
+Additionally, you will need to connect the server to a mongoDB database using the `.env` file.
+To be more specific, you will need the `.env` to contain the variable `MONGO_URI` configured to your database with associated Username and Password.
+
+
 # Legal
 
 The content stored in the database is not representative of the ideas of the developers. They are also not legally binding to us as developers. We offer a service and are not legally responsible if users abuse it.
