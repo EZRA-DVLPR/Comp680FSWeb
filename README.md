@@ -24,8 +24,6 @@ We are utilizing the MERN stack:
 - React.JS for the frontend
 - Node.JS for the backend
 
-We additionally hope to utilize the cloud for storing the data.
-
 A future development is to make the website serverless (hosted on the cloud).
 
 ## API Functionality
@@ -42,6 +40,18 @@ A future development is to make the website serverless (hosted on the cloud).
 ├──client
 │   ├──...
 │   └──...
+├──Documentation
+│   ├──Sample
+│   │   ├──Images
+│   │   └──sample.tex
+│   ├──Sprint1
+│   │   ├──Images
+│   │   └──sample.tex
+│   └──Sprint2
+│       ├──Images
+│       └──sample.tex
+├──Presentations
+│   └──Presentation1.pptx
 ├──server
 │   ├──...
 │   └──...
