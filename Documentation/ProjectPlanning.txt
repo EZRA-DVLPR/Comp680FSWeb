@@ -1,16 +1,27 @@
-//1st
+Simplistic Ideas for data compression handling.
+
+//1st step
 //implement a single compression alg for each file type
 
 switch(data type) {
     compression alg 1
+	break;
+
     compression alg 2
+	break;
     ...
 }
 
-//2nd
+//2nd step
 //allow several options for compression
 
-compression alg 1 or compression alg 2
+data type 1 can use:
+    compression alg 1 or compression alg 2
+
+data type 2 can use:
+    compression alg 2
+
+...
 
 
 //3rd
@@ -18,13 +29,25 @@ compression alg 1 or compression alg 2
 
 
 
+These are some basic ideas for a breakdown of the project.
+They aren't rules, only guidelines and thoughts on what are some things you can do if you aren't sure.
+They don't have to be completed in any particular order either.
+
+
+
 4 Parts:
 
 Frontend - Isaiah
 
-    Step 1: 
+    Step 1: Separate styling from the .js files
 
-    Step 2: 
+    Step 2: Add the correct images to the webpage using react templates
+
+    Step 3: Add place for preview to exist
+
+    Step 4: Stylize the parts of the page to look modern and user friendly
+
+
 
 Middleware (Compression/Decompression) - Neha
 
@@ -36,14 +59,28 @@ Middleware (Compression/Decompression) - Neha
 
     Step 4: Single simple compression alg on any file type. retrieve and decompress.
 
-Backend 1 (API: User/Login Authentication, etc) - ?
 
-    Step 1: Google authentication
 
-    Step 2: Social Media authentication?
+Backend 1 (API: User/Login Authentication, etc) - Pranati
 
-Backend 2 (Database + Routes) - ?
+    (always going to communicate with Arian)
 
-    Step 1: 
+    Step 1: Google authentication (communication with Isaiah on design)
 
-    Step 2: 
+    Step 2: Social Media authentication (communication with Isaiah on design)
+
+    Step 3: Social Media Connectivity (allow posts to IG, twitter, etc.)
+
+    Step 4: QR code adding? Email delivery service? Translation service?
+
+
+
+Backend 2 (Database + Routes) - Arian
+
+    Step 1: Update the models to be used in the db
+
+    Step 2: compression routes (communication with Neha on design)
+
+    Step 3: Search functions (communication with Isaiah on design)
+
+    Step 4: Research Cloud Hosting - Is it possible for the project? What services are available?
