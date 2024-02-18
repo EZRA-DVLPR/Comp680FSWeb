@@ -1,0 +1,49 @@
+//1st
+//implement a single compression alg for each file type
+
+switch(data type) {
+    compression alg 1
+    compression alg 2
+    ...
+}
+
+//2nd
+//allow several options for compression
+
+compression alg 1 or compression alg 2
+
+
+//3rd
+//allow preview of compressed data for client
+
+
+
+4 Parts:
+
+Frontend - Isaiah
+
+    Step 1: 
+
+    Step 2: 
+
+Middleware (Compression/Decompression) - Neha
+
+    Step 1: Upload a single file (image) to the database. Retrieve the file from the database
+
+    Step 2: Uploading different file types and retrieving them (audio, video, pdf, etc.) retrieve these files as well.
+
+    Step 3: Try a simple compression algorithm on the image. Retrieve it, then decompress it.
+
+    Step 4: Single simple compression alg on any file type. retrieve and decompress.
+
+Backend 1 (API: User/Login Authentication, etc) - ?
+
+    Step 1: Google authentication
+
+    Step 2: Social Media authentication?
+
+Backend 2 (Database + Routes) - ?
+
+    Step 1: 
+
+    Step 2: 
