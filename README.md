@@ -63,7 +63,7 @@ The "client" folder runs the frontend of the app
 The "server" folder runs the backend of the app
 
 # Installation
-
+## NPM
 run the following commands in order to set up the client and server properly.
 
 ## For client:
@@ -81,6 +81,12 @@ npm install
 Additionally, you will need to connect the server to a mongoDB database using the `.env` file.
 To be more specific, you will need the `.env` to contain the variable `MONGO_URI` configured to your database with associated Username and Password.
 
+## Docker
+Install docker, add the `.env` file as mentioned before, and run
+``` shell
+docker compose up -d
+```
+This brings up containers.
 
 # Legal
 
