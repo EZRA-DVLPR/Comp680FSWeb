@@ -9,28 +9,57 @@ import FileCard from '../components/home/FileCard';
 const Home = () => {
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [showType, setShowType] = useState('table');
+
+    //how to display the data: table or card views
+    const [showType, setShowType] = useState('');
 
     //processing for data retrieval
     useEffect(() => {
+        //load when there is no content to retrieve
         setLoading(true);
+
+        //establish connection to server
         axios.get('http://localhost:5555/files').then((res) => {
+            //if successful then receive the data and stop loading
             setFiles(res.data.data);
             setLoading(false);
         }).catch((err) => {
+            //if unsuccessful log error and stop loading
             console.log(err);
             setLoading(false);
         });
     }, []);
 
+    //retrieve showType from local storage to display
+    useEffect(() => {
+        const storedShowType = localStorage.getItem('showType');
+        //if there is an existing storedShowType in the localstorage, use it.
+        if (storedShowType) {
+            setShowType(storedShowType);
+        }
+    }, []);
+
+    //handle changes to showType
+    const handleShowTypeChange = (event) => {
+        //retrieve value of selection
+        const showTypeSelected = event.target.value;
+
+        //update only if it's different than the stored selection
+        if (localStorage.getItem('showType') != showTypeSelected) {
+            //change showType and store the new showType in localStorage
+            setShowType(showTypeSelected);
+            localStorage.setItem('showType', showTypeSelected);
+        }
+    };
+
     //what gets returned to user
     return (
         <div className='p-4'>
             <div className='flex justify-center items-center gap-x-4'>
-                <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' onClick={() => setShowType('table')}>
+                <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'  value = "table" onClick={handleShowTypeChange}>
                     Table
                 </button>
-                <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' onClick={() => setShowType('card')}>
+                <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'  value = "card" onClick={handleShowTypeChange}>
                     Card
                 </button>
             </div>
