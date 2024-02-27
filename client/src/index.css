@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+
+able to apply things directly to the base of all pages:
+
+eg.
+
+change background color to grey to base of pages
+
+@layer base {
+    html {
+        @apply bg-slate-200
+    }
+}
+
+Look at writing plugins and how to include plugins
+
+
+
+look at flex category in tailwind docs
+
+can use grids to design layout for the items in the table and card view. everything is designed in column format
+
+alt. to grid is flexbox which is more freeform.
+
+container
+
+*/
+

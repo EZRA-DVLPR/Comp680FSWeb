@@ -11,8 +11,8 @@ const FileTable = ( {files} ) => {
                             <th className='border border-slate-600 rounded-md'>No</th>
                             <th className='border border-slate-600 rounded-md'>FileName</th>
                             <th className='border border-slate-600 rounded-md max-md:hidden'>Data</th>
-                    {/*//each data member w/in db can be shown here using the outline as above*/}
-                            <th className='border border-slate-600 rounded-md max-md:hidden'>Operations</th>
+                            {/*//each data member w/in db can be shown here using the outline as above*/}
+                            <th className='border border-slate-600 rounded-md'>Operations</th>
                         </tr>
                     </thead>
                     <tbody>

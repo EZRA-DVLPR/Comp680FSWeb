@@ -38,6 +38,7 @@ const CreateFiles = () => {
   return (
     <div className='p-4'>
       <BackButton/>
+      {/* can use space-x-4 to separate the elements within this div/section thing. is an alternative to always using margin top and margin bottom */}
       <h1 className='text-3xl my-4'>Create File</h1>
       {loading ? (<Spinner />) : '' }
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
