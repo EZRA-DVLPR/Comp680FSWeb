@@ -1,9 +1,9 @@
-FROM node:latest
+FROM oven/bun
 
 COPY . .
 
-RUN npm install
+RUN bun install
 
 EXPOSE 5173
 
-ENTRYPOINT npm run dev
+ENTRYPOINT bun run dev
