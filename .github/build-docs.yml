@@ -1,0 +1,16 @@
+name: Simple Usage
+
+on: push
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker://pandoc/latex:2.9
+        with:
+          args: -f gfm -t revealjs -s sprint1.md -o docs/sprint1.html -V theme=dracula --slide-level=2
+      - uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: output
