@@ -13,8 +13,8 @@ jobs:
           args: -f gfm -t revealjs -s Documentation/Sprint1/sprint1.md -o public/sprint1.html -V theme=dracula --slide-level=2
       - uses: actions/upload-artifact@v3
         with:
-          name: output
-          path: output
+          name: public
+          path: public
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
