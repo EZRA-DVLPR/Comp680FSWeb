@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+      - run: mkdir public
       - uses: docker://pandoc/latex:2.9
         with:
           args: -f gfm -t revealjs -s Documentation/Sprint1/sprint1.md -o public/sprint1.html -V theme=dracula --slide-level=2
