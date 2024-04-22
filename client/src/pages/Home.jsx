@@ -74,13 +74,8 @@ const Home = () => {
             {/*//after loading the first division, check loading and decide layout*/}
 
             {loading ? (<Spinner />) :
-                showType === 'table' ?
-                    (
-                        <FileTable files={files} />
-                    ) : (
-                        <FileCard files={files} />
-                    )
-                }
+                showType === 'table' ? (<FileTable files={files} />) : (<FileCard files={files} />)
+            }
         </div>
     );
 };

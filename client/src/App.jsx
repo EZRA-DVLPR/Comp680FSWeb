@@ -5,6 +5,7 @@ import CreateFile from './pages/CreateFiles';
 import ShowFile from './pages/ShowFile';
 import EditFile from './pages/EditFile';
 import DeleteFile from './pages/DeleteFile';
+import Samples from './pages/Samples';
 
 const App = () => {
   return (
@@ -14,8 +15,8 @@ const App = () => {
       <Route path='/files/details/:id' element={<ShowFile />} />
       <Route path='/files/edit/:id' element={<EditFile />} />
       <Route path='/files/delete/:id' element={<DeleteFile />} />
+      <Route path='/samples' element={<Samples />} />
     </Routes>
-    
   );
 };
 
