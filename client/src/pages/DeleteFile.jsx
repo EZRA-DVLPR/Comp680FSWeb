@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BackButton from '../components/BackButton';
+import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -30,7 +30,7 @@ const DeleteFile = () => {
 
   return (
     <div className='p-4'>
-      <BackButton />
+      <HomeButton />
       <h1 className='text-3xl my-4'>
         Delete File
       </h1>

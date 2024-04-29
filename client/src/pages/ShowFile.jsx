@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import BackButton from '../components/BackButton';
+import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 
 import {BiPaperPlane} from 'react-icons/bi'
@@ -39,7 +39,7 @@ const ShowFile = () => {
 
   return (
     <div className='p-4'>
-      <BackButton />
+      <HomeButton />
       
       <div className='items-center w-screen flex'>
 

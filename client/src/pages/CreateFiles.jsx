@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import BackButton from '../components/BackButton';
+import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 
@@ -37,7 +37,7 @@ const CreateFiles = () => {
 
   return (
     <div className='p-4'>
-      <BackButton/>
+      <HomeButton/>
       {/* can use space-x-4 to separate the elements within this div/section thing. is an alternative to always using margin top and margin bottom */}
       <h1 className='text-3xl my-4'>Create File</h1>
       {loading ? (<Spinner />) : '' }

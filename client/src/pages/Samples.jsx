@@ -3,7 +3,7 @@
 //this is a temporary page and will not be added in the final product
 
 import Spinner from '../components/Spinner';
-import BackButton from '../components/BackButton';
+import HomeButton from '../components/HomeButton';
 
 import { 
     BsBookmarkFill,
@@ -55,7 +55,7 @@ const Samples = () => {
     //page that gets returned to user
     return (
         <div className='p-4'>
-            <BackButton/>
+            <HomeButton/>
             <Spinner />
 
             <div className='flex justify-between items-center'>
