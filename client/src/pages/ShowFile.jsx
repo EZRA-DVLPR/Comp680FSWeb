@@ -4,7 +4,18 @@ import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 
+import {BiPaperPlane} from 'react-icons/bi'
+
 const ShowFile = () => {
+  //email setup
+  const recipient = '';
+  const subject = encodeURIComponent('Check out this cool file!');
+  const body = encodeURIComponent('This file was found from FSW, a free file sharing website.');
+  const mailToLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+  const sendEmail = () => {
+    window.location.href = mailToLink;
+  };
 
   //obtain list and loading state of page
   const [loadedFile, setFile] = useState({});
@@ -27,10 +38,20 @@ const ShowFile = () => {
   return (
     <div className='p-4'>
       <BackButton />
-      <h1 className='text-3xl my-4'>Show File</h1>
+      
+
+      {/* Share the file */}
+      <div className='items-center justify-center w-screen flex'>
+        <h1 className='text-3xl my-4 w-1/2' >Show File</h1>
+        <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' onClick={sendEmail}>
+          <BiPaperPlane />
+        </button>
+      </div>
+
+      {/* Display contents of the file */}
       {
         loading ? (<Spinner />) : (
-          <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
+          <div className='flex flex-col border-2 border-sky-400 rounded-xl w-1/3 p-4'>
             <div className='my-4'>
               <span className='text-xl mr-4 text-gray-500'>Id</span>
               <span>{loadedFile._id}</span>
@@ -54,9 +75,10 @@ const ShowFile = () => {
               <span>{new Date(loadedFile.updatedAt).toString()}</span>
             </div>
             
+            
+
           </div>
 
-        
         )
       }
     </div>

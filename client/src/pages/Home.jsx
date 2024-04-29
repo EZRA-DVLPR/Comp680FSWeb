@@ -6,6 +6,8 @@ import { MdOutlineAddBox } from 'react-icons/md';
 import FileTable from '../components/home/FileTable';
 import FileCard from '../components/home/FileCard';
 
+import {MdGridView, MdList} from 'react-icons/md';
+
 const Home = () => {
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -58,9 +60,15 @@ const Home = () => {
             <div className='flex justify-center items-center gap-x-4'>
                 <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'  value = "table" onClick={handleShowTypeChange}>
                     Table
+                    <div className='flex justify-center'>
+                        <MdList />
+                    </div>
                 </button>
                 <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'  value = "card" onClick={handleShowTypeChange}>
                     Card
+                    <div className='flex justify-center'>
+                        <MdGridView />
+                    </div>
                 </button>
             </div>
 

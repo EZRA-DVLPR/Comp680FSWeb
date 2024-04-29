@@ -11,33 +11,27 @@ import {
     BsBookmarkXFill,
     BsBookmarks,
     BsBookmarksFill,
-    BsFileEarmarkMusic,
     BsQrCode,
     } from 'react-icons/bs';
 
 import { 
-        MdAttachFile,
-        MdDarkMode,
-        MdDownload,
-        MdDownloadDone,
-        MdGridView,
-        MdInsertLink, //used to copy link to file
-        MdLightMode,
-        MdList,
-        MdLogin, //also logout
-        MdMiscellaneousServices, //settings
-        } from 'react-icons/md';    
+    MdAttachFile,
+    MdDarkMode,
+    MdDownload,
+    MdDownloadDone,
+    MdGridView,
+    MdLightMode,
+    MdList,
+    MdLogin, //also logout
+    MdMiscellaneousServices, //settings
+    } from 'react-icons/md';    
 
 //these are all fills. for outline do AiOutline_
 import {
     AiFillDropboxSquare, //circle available too
     AiFillLike,
     AiFillDislike,
-    AiFillCustomerService, //headphones
-    AiFillControl, //control sliders for audio
-    AiFillFileImage, //image button
     AiFillFacebook,
-    AiFillHeart,
     AiFillHome,
     AiFillInstagram,
     AiFillLinkedin,
@@ -51,12 +45,8 @@ import {
 //these are all fills. but also available in solid
 import {
     BiError,
-    BiGridAlt,
     BiHistory,
-    BiImage,
-    BiPaperPlane,
-    BiPause,
-    BiSave
+    BiPaperPlane
     } from 'react-icons/bi'
 
 const Samples = () => {
