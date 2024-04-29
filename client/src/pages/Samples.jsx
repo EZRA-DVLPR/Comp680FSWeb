@@ -4,49 +4,34 @@
 
 import Spinner from '../components/Spinner';
 import HomeButton from '../components/HomeButton';
+import ColorThemeButton from '../components/ColorTheme';
 
-import { 
-    BsBookmarkFill,
-    BsBookmark,
-    BsBookmarkXFill,
-    BsBookmarks,
-    BsBookmarksFill,
-    BsQrCode,
+import {
+    BsQrCode
     } from 'react-icons/bs';
 
 import { 
     MdAttachFile,
-    MdDarkMode,
     MdDownload,
     MdDownloadDone,
-    MdGridView,
-    MdLightMode,
-    MdList,
     MdLogin, //also logout
-    MdMiscellaneousServices, //settings
+    MdMiscellaneousServices //settings
     } from 'react-icons/md';    
 
 //these are all fills. for outline do AiOutline_
 import {
     AiFillDropboxSquare, //circle available too
-    AiFillLike,
-    AiFillDislike,
     AiFillFacebook,
-    AiFillHome,
     AiFillInstagram,
     AiFillLinkedin,
     AiFillRedditSquare, //also available in square
-    AiFillTag,
-    AiFillTags,
-    AiFillTwitterSquare, //also available in square
+    AiFillTwitterSquare //also available in square
     } from 'react-icons/ai'
 
 
 //these are all fills. but also available in solid
 import {
-    BiError,
-    BiHistory,
-    BiPaperPlane
+    BiError
     } from 'react-icons/bi'
 
 const Samples = () => {
@@ -57,6 +42,7 @@ const Samples = () => {
         <div className='p-4'>
             <HomeButton/>
             <Spinner />
+            <ColorThemeButton />
 
             <div className='flex justify-between items-center'>
                 <table className='w-full'>
@@ -72,42 +58,6 @@ const Samples = () => {
 
                         <tr className='bg-white'>
                             <td>Bs</td>
-                            <td>BookmarkFill</td>
-                            <td><BsBookmarkFill /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Bs</td>
-                            <td>Bookmark</td>
-                            <td><BsBookmark /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Bs</td>
-                            <td>BookmarkXFill</td>
-                            <td><BsBookmarkXFill /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Bs</td>
-                            <td>Bookmarks</td>
-                            <td><BsBookmarks /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Bs</td>
-                            <td>BookmarksFill</td>
-                            <td><BsBookmarksFill /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Bi</td>
-                            <td>PaperPlane</td>
-                            <td><BiPaperPlane /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Bs</td>
                             <td>QrCode</td>
                             <td><BsQrCode /></td>
                         </tr>
@@ -116,18 +66,6 @@ const Samples = () => {
                             <td>Md</td>
                             <td>AttachFile</td>
                             <td><MdAttachFile /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Md</td>
-                            <td>LightMode</td>
-                            <td><MdLightMode /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Md</td>
-                            <td>DarkMode</td>
-                            <td><MdDarkMode /></td>
                         </tr>
 
                         <tr className='bg-gray-100'>
@@ -150,18 +88,6 @@ const Samples = () => {
 
                         <tr className='bg-gray-100'>
                             <td>Md</td>
-                            <td>GridView</td>
-                            <td><MdGridView /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Md</td>
-                            <td>List</td>
-                            <td><MdList /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Md</td>
                             <td>Login</td>
                             <td><MdLogin /></td>
                         </tr>
@@ -170,12 +96,6 @@ const Samples = () => {
                             <td>Md</td>
                             <td>MiscellaneousServices</td>
                             <td><MdMiscellaneousServices /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Ai</td>
-                            <td>FillHome</td>
-                            <td><AiFillHome /></td>
                         </tr>
 
                         <tr className='bg-white'>
@@ -212,36 +132,6 @@ const Samples = () => {
                             <td>Ai</td>
                             <td>FillTwitterSquare</td>
                             <td><AiFillTwitterSquare /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Ai</td>
-                            <td>FillTag</td>
-                            <td><AiFillTag /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Ai</td>
-                            <td>FillTags</td>
-                            <td><AiFillTags /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Bi</td>
-                            <td>History</td>
-                            <td><BiHistory /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Ai</td>
-                            <td>FillLike</td>
-                            <td><AiFillLike /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Ai</td>
-                            <td>FillDislike</td>
-                            <td><AiFillDislike /></td>
                         </tr>
 
                     </tbody>
