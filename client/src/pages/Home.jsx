@@ -67,13 +67,13 @@ const Home = () => {
     //what gets returned to user
     return (
         <div className='p-4'>
-            
             <div className="flex justify-between items-center w-full">
+            
             {/* Flex container for the first two buttons */}
             <div className="flex gap-x-4 justify-center items-center flex-1">
                 {/* Table button */}
                 <button
-                    className={isLightMode == true ? 'bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' :  'bg-red-300 hover:bg-sky-600 px-4 py-1 rounded-lg'}
+                    className={isLightMode == true ? 'bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' :  'bg-sky-600 hover:bg-sky-300 px-4 py-1 rounded-lg'}
                     value="Table"
                     onClick={handleShowTypeChange}
                 >
@@ -85,7 +85,7 @@ const Home = () => {
                 
                 {/* Card button */}
                 <button
-                    className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
+                    className={isLightMode == true ? 'bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' :  'bg-sky-600 hover:bg-sky-300 px-4 py-1 rounded-lg'}
                     value="Card" onClick={handleShowTypeChange}
                 >
                     Card
@@ -100,13 +100,13 @@ const Home = () => {
             <ColorThemeButton />
         </div>
             <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'> Files List </h1>
+                <h1 className={isLightMode == true ? 'text-gray-800 text-3xl my-8' :  'text-gray-200 text-3xl my-8'}> Files List </h1>
                 <Link to='/files/create'>
-                    <MdOutlineAddBox className='text-sky-800 text-4xl' />
+                    <MdOutlineAddBox className={isLightMode == true ? 'text-sky-800 text-4xl' :  'text-sky-500 text-4xl'} />
                 </Link>
             </div>
 
-            {/*//after loading the first div, check loading and decide layout*/}
+            {/* after loading the first div, check loading and decide layout*/}
 
             {loading ? (<Spinner />) :
                 showType === 'Table' ? (<FileTable files={files} />) : (<FileCard files={files} />)
