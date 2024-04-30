@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import Header from '../components/Header';
 
 const DeleteFile = () => {
 
@@ -30,7 +30,7 @@ const DeleteFile = () => {
 
   return (
     <div className='p-4'>
-      <HomeButton />
+      <Header />
       <h1 className='text-3xl my-4'>
         Delete File
       </h1>
@@ -47,4 +47,4 @@ const DeleteFile = () => {
   )
 }
 
-export default DeleteFile
+export default DeleteFile;

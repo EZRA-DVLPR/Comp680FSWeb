@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 import { FaUpload } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 
 const CreateFiles = () => {
     const [loading, setLoading] = useState(false);
@@ -56,11 +56,12 @@ const CreateFiles = () => {
 
     return (
     <div className='p-4'>
-        <HomeButton />
+        <Header />
         {loading ? (<Spinner />) : '' }
 
+        <h2 className='text-3xl my-4 justify-center flex'>File Upload</h2>
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
-            <h2 className='text-3xl my-4'>File Upload</h2>
+            
             <form onSubmit={handleSubmit}>
                 <div className='mb-4'>
                     <label>

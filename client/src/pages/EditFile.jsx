@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import HomeButton from '../components/HomeButton';
+import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 
@@ -45,7 +45,7 @@ const EditFile = () => {
 
   return (
     <div className='p-4'>
-      <HomeButton/>
+      <Header />
       <h1 className='text-3xl my-4'>Edit File</h1>
       {loading ? (<Spinner />) : '' }
       <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
@@ -59,4 +59,4 @@ const EditFile = () => {
   )
 }
 
-export default EditFile
+export default EditFile;

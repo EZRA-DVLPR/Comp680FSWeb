@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import Socials from '../components/Socials';
 import { MdDownload, MdDownloadDone } from 'react-icons/md';
 import { useSnackbar } from 'notistack';
+import Header from '../components/Header';
 
 const ShowFile = () => {
   //obtain list and loading state of page
@@ -60,7 +60,7 @@ const ShowFile = () => {
 
   return (
     <div className='p-4'>
-      <HomeButton />
+      <Header />
       
       <div className='items-center w-screen flex'>
 
@@ -109,4 +109,4 @@ const ShowFile = () => {
   )
 }
 
-export default ShowFile
+export default ShowFile;

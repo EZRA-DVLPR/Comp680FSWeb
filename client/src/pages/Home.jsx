@@ -92,7 +92,7 @@ const Home = () => {
                 
             </div>
             
-            {/* ColorThemeButton on the right side */}            
+            {/* ColorThemeButton on the right side */}
             <ColorThemeButton />
         </div>
             <div className='flex justify-between items-center'>

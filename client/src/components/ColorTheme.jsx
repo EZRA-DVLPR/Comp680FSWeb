@@ -37,7 +37,7 @@ const ToggleSwitch = () => {
 
                 {/* Render different icons based on the state */}
 
-                {isLightMode ? (<MdLightMode className="text-white" />) : (<MdDarkMode className="text-gray-700" />)}
+                {isLightMode ? (<MdLightMode className="text-white text-2xl" />) : (<MdDarkMode className="text-gray-700 text-2xl" />)}
             </button>
         </div>
     );
