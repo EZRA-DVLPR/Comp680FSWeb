@@ -8,8 +8,6 @@ import ColorThemeButton from '../components/ColorTheme';
 import Socials from '../components/Socials';
 
 import {
-    MdDownload,
-    MdDownloadDone,
     MdLogin, //also logout
     MdMiscellaneousServices //settings
     } from 'react-icons/md';    
@@ -41,18 +39,6 @@ const Samples = () => {
                     </thead>
 
                     <tbody>
-
-                        <tr className='bg-gray-100'>
-                            <td>Md</td>
-                            <td>Download</td>
-                            <td><MdDownload /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Md</td>
-                            <td>DownloadDone</td>
-                            <td><MdDownloadDone /></td>
-                        </tr>
 
                         <tr className='bg-gray-100'>
                             <td>Bi</td>

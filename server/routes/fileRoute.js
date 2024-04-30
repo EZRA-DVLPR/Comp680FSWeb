@@ -92,9 +92,9 @@ router.put('/:id', async (req, res) => {
     try {
 
         //check if the user has send the proper data specified
-        if (!req.body.filename || !req.body.filepath) {
+        if (!req.body.filename) {
             return res.status(400).send({
-                message: 'Data received was incomplete. Data Replacement Cancelled. Send all required fields: filename, filedata',
+                message: 'Data received was incomplete. Data Replacement Cancelled. Send all required fields: filename',
             });
         }
 

@@ -22,7 +22,7 @@ const DeleteFile = () => {
     }).catch((err) => {
       setLoading(false);
       //alert('An error occured. Please Check Console.');
-      enqueueSnackbar('Error', {variant: 'erorr'});
+      enqueueSnackbar('Error', {variant: 'error'});
       console.log(err);
     });
   };

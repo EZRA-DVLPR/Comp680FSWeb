@@ -9,7 +9,6 @@ const EditFile = () => {
 
   //required fields for adding to db
   const [filename, setFilename] = useState('');
-  const [filedata, setFileData] = useState('');
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -21,7 +20,6 @@ const EditFile = () => {
     setLoading(true);
     axios.get(`http://localhost:5555/files/${id}`).then((res) => {
       setFilename(res.data.filename);
-      setFileData(res.data.filedata);
       setLoading(false);
     }).catch((err) => {
       setLoading(false);
@@ -33,7 +31,6 @@ const EditFile = () => {
   const handleEditFile = () => {
     const data = {
       filename,
-      filedata,
     };
     setLoading(true);
     axios.put(`http://localhost:5555/files/${id}`, data).then(() => {
@@ -43,7 +40,7 @@ const EditFile = () => {
     }).catch((err) => {
       setLoading(false);
       //alert('An Error Occurred. Please Check Console');
-      enqueueSnackbar('Error', {variant: 'error'});
+      enqueueSnackbar('Error editing file information', {variant: 'error'});
       console.log(err);
     });
   };

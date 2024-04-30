@@ -4,11 +4,17 @@ import { useParams } from 'react-router-dom';
 import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import Socials from '../components/Socials';
+import { MdDownload, MdDownloadDone } from 'react-icons/md';
+import { useSnackbar } from 'notistack';
 
 const ShowFile = () => {
   //obtain list and loading state of page
   const [loadedFile, setFile] = useState({});
   const [loading, setLoading] = useState(false);
+  const [downloadState, setDownloadState] = useState(false);
+
+  //snackbar for displaying changes
+  const { enqueueSnackbar } = useSnackbar();
   
   //get id of file
   const { id } = useParams();
@@ -44,6 +50,12 @@ const ShowFile = () => {
 
     //remove link from DOM
     document.body.removeChild(link);
+
+    //set download state to true
+    setDownloadState(true);
+
+    //update snackbar
+    enqueueSnackbar(`Downloaded file successfully!`, {variant: 'success'});
 };
 
   return (
@@ -70,6 +82,10 @@ const ShowFile = () => {
               <div className='my-4'>
                 <span className='text-xl mr-4 text-gray-500'>Filename</span>
                 <span>{loadedFile.filename}</span>
+              </div>
+              <div className='my-4'>
+                <span className='text-xl mr-4 text-gray-500'>File Type</span>
+                <span>{loadedFile.filetype}</span>
               </div>
 
               {/* Obtain the metadata from the file */}
@@ -99,7 +115,7 @@ const ShowFile = () => {
       <Socials /> 
       <div>
         <button className='flex border-2 border-red-400 rounded-xl w-1/3 p-4' onClick={handleDownload}>
-          Download!
+          {downloadState ? <MdDownloadDone /> : <MdDownload />}
         </button>
       </div>
       
