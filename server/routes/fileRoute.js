@@ -1,7 +1,9 @@
 import path from 'path';
 import express from "express";
 import multer from 'multer';
-import  { modelFile } from '../models/fileModel.js';
+import sharp from 'sharp';
+import { modelFile } from '../models/fileModel.js';
+import fs from 'fs';
 
 const router = express.Router();
 
@@ -22,11 +24,18 @@ const upload = multer({ storage });
 // Upload file route
 router.post('/upload', upload.single('file'), async (req, res) => {
     try {
+        //contains entire file contents in a single buffer ==== req.file.buffer
         const newFile = new modelFile({
             filename: req.body.name,
             filetype: req.file.mimetype,
             filepath: req.file.path,
         });
+        
+        //compress if image
+        if (req.file.mimetype.includes("image")) {
+            //save compressed image
+            await sharp(req.file.path).resize(200).toFile(`uploads/${req.file.originalname}`)
+        }
         await newFile.save();
         res.status(201).json({ message: 'File uploaded successfully', file: newFile });
     } catch (err) {
