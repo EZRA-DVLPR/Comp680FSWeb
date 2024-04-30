@@ -7,8 +7,7 @@ import FileCard from '../components/home/FileCard';
 import ColorThemeButton from '../components/ColorTheme';
 import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
-
-import {MdGridView, MdList} from 'react-icons/md';
+import { MdGridView, MdList } from 'react-icons/md';
 
 const Home = () => {
     const [files, setFiles] = useState([]);

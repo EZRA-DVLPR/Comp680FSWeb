@@ -1,5 +1,6 @@
 import express from "express";
 import  { modelFile } from '../models/fileModel.js';
+import path from 'path';
 
 const router = express.Router();
 
@@ -8,7 +9,7 @@ router.post('/', async (req, res) => {
     try {
         
         //check if the user has send the proper data specified
-        if (!req.body.filename || !req.body.filedata) {
+        if (!req.body.filename || !req.body.filedata || !req.body.filepath) {
             return res.status(400).send({
                 message: 'Data received was incomplete. Data Addition Cancelled. Send all required fields: filename, filedata',
             });
@@ -18,6 +19,7 @@ router.post('/', async (req, res) => {
         const newFile = {
             filename: req.body.filename,
             filedata: req.body.filedata,
+            filepath: req.body.filepath,
         };
 
         //send data and wait for confirmation
@@ -70,7 +72,7 @@ router.put('/:id', async (req, res) => {
     try {
 
         //check if the user has send the proper data specified
-        if (!req.body.filename || !req.body.filedata) {
+        if (!req.body.filename || !req.body.filedata || !req.body.filepath) {
             return res.status(400).send({
                 message: 'Data received was incomplete. Data Replacement Cancelled. Send all required fields: filename, filedata',
             });
@@ -108,6 +110,27 @@ router.delete('/:id', async (req, res) => {
     } catch (err) {
         console.log(err.message);
         res.status(500).send({message: err.message});
+    }
+});
+
+// route to download a file by id
+router.get('/download/:id', async (req, res) => {
+    try {
+        const fileByID = await modelFile.findById(req.params.id);
+        if (fileByID && fileByID.filepath) {
+            const filepath = path.resolve(fileByID.filepath);
+            res.download(filepath, fileByID.name, (err) => {
+                if (err) {
+                    res.status(500).send('Error downloading file');
+                }
+            });
+        } else if (!fileByID.filepath) {
+            res.status(404).send('No filepath found for file! Server Error')
+        } else {
+            res.status(404).send('Item not found');
+        }
+    } catch (error) {
+        res.status(500).send('Server error');
     }
 });
 
