@@ -11,6 +11,11 @@ const fileSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+
+        filepath: {
+            type: String,
+            required: true,
+        }
     },
     {   
         timestamps: true,

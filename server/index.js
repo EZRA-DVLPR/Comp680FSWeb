@@ -4,11 +4,6 @@ import mongoose from 'mongoose';
 import filesRoute from './routes/fileRoute.js';
 import cors from 'cors';
 
-//added from Neha's code
-import multer from 'multer';
-import fs from 'fs';
-import path from 'path';
-
 dotenv.config();
 const app = express();
 
@@ -33,10 +28,6 @@ app.get('/', (req, res) => {
     //console.log(req)
     return res.status(234).send('Hello World!')
 });
-
-// Multer storage and upload settings
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
 
 app.use('/files', filesRoute);
 

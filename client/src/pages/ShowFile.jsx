@@ -6,8 +6,6 @@ import Spinner from '../components/Spinner';
 import Socials from '../components/Socials';
 
 const ShowFile = () => {
-  
-
   //obtain list and loading state of page
   const [loadedFile, setFile] = useState({});
   const [loading, setLoading] = useState(false);
@@ -27,6 +25,27 @@ const ShowFile = () => {
     });
   }, [])
 
+  //download function for this file
+  const handleDownload = () => {
+    //create a link
+    const link = document.createElement('a');
+
+    //connect to server
+    link.href = `http://localhost:5555/files/download/${id}`;
+
+    //set download to filename
+    link.download = loadedFile.filename;
+
+    //add to DOM
+    document.body.appendChild(link);
+
+    //click to start download
+    link.click();
+
+    //remove link from DOM
+    document.body.removeChild(link);
+};
+
   return (
     <div className='p-4'>
       <HomeButton />
@@ -39,13 +58,11 @@ const ShowFile = () => {
         {/* empty space to fill horizonal line */}
         <div className='w-1/3'></div>
 
-        
       </div>
 
       {/* Display contents of the file */}
 
-      {
-        loading ? (<Spinner />) : (
+      {loading ? (<Spinner />) : (
           <div className='w-screen flex'>
             
             {/* file info */}
@@ -88,6 +105,11 @@ const ShowFile = () => {
         )
       }
       <Socials /> 
+      <div>
+        <button className='flex border-2 border-red-400 rounded-xl w-1/3 p-4' onClick={handleDownload}>
+          Download!
+        </button>
+      </div>
       
     </div>
   )
