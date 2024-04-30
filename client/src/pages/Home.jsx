@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md';
@@ -8,6 +8,7 @@ import ColorThemeButton from '../components/ColorTheme';
 import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 import { MdGridView, MdList } from 'react-icons/md';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 const Home = () => {
     const [files, setFiles] = useState([]);
@@ -15,6 +16,9 @@ const Home = () => {
 
     //how to display the data: table or card views
     const [showType, setShowType] = useState('');
+
+    //get lightmode theme from context
+    const { isLightMode } = useContext(ThemeContext);
 
     //snackbar for displaying changes
     const { enqueueSnackbar } = useSnackbar();
@@ -69,7 +73,7 @@ const Home = () => {
             <div className="flex gap-x-4 justify-center items-center flex-1">
                 {/* Table button */}
                 <button
-                    className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
+                    className={isLightMode == true ? 'bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' :  'bg-red-300 hover:bg-sky-600 px-4 py-1 rounded-lg'}
                     value="Table"
                     onClick={handleShowTypeChange}
                 >
