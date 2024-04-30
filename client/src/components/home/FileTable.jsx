@@ -10,7 +10,7 @@ const FileTable = ( {files} ) => {
                         <tr>
                             <th className='border border-slate-600 rounded-md'>No</th>
                             <th className='border border-slate-600 rounded-md'>FileName</th>
-                            <th className='border border-slate-600 rounded-md max-md:hidden'>Data</th>
+                            <th className='border border-slate-600 rounded-md max-md:hidden'>File Type</th>
                             {/*//each data member w/in db can be shown here using the outline as above*/}
                             <th className='border border-slate-600 rounded-md'>Operations</th>
                         </tr>
@@ -25,11 +25,9 @@ const FileTable = ( {files} ) => {
                                     {file.filename}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
-                                    {file.filedata}
+                                    {file.filetype}
                                 </td>
-                                {/*//each data member w/in db can be shown here using the outline as above
-
-                                //now we connect to the other pages*/}
+                                {/* now we connect to the other pages */}
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
                                         <Link to={`/files/details/${file._id}`}>
