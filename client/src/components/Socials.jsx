@@ -10,10 +10,6 @@ import {
   AiFillTwitterSquare //also available in square
   } from 'react-icons/ai';
 
-import {
-  BsQrCode
-  } from 'react-icons/bs';
-
 import { BiPaperPlane } from 'react-icons/bi'
 
 const Socials = () => {
@@ -52,11 +48,6 @@ const Socials = () => {
       
       <button>
         <AiFillTwitterSquare />  
-      </button>
-      
-      {/* generate a qr code for the current webpage */}
-      <button className='text-4xl ml-1 mr-1'>
-        <BsQrCode />
       </button>
 
       {/* Share the file via email button */}

@@ -75,10 +75,7 @@ const ShowFile = () => {
       {/* Display contents of the file */}
 
       {loading ? (<Spinner />) : (
-          <div className='w-screen flex'>
-            
-            {/* file info */}
-            <div className='flex flex-col border-2 border-sky-400 rounded-xl w-1/3 p-4'>
+            <div className='flex flex-col border-2 border-sky-400 rounded-xl w-auto p-4'>
               <div className='my-4'>
                 <span className='text-xl mr-4 text-gray-500'>Filename</span>
                 <span>{loadedFile.filename}</span>
@@ -99,23 +96,12 @@ const ShowFile = () => {
                 <span>{new Date(loadedFile.updatedAt).toString()}</span>
               </div>
             </div>
-
-            {/* horizontal space */}
-
-            <div className='w-1/4'/>
-
-            {/* file preview */}
-
-            <div className='flex border-2 border-sky-400 rounded-xl w-1/3 p-4'>
-              File Preview...
-            </div>
-          </div>
         )
       }
       <Socials /> 
-      <div>
-        <button className='flex border-2 border-red-400 rounded-xl w-1/3 p-4' onClick={handleDownload}>
-          {downloadState ? <MdDownloadDone /> : <MdDownload />}
+      <div className='justify-center flex'>
+        <button className='flex border-2 border-red-400 rounded-xl w-1/8 p-4 items-center justify-center' onClick={handleDownload}>
+          {downloadState ? <MdDownloadDone className='text-3xl'/> : <MdDownload className='text-3xl'/>}
         </button>
       </div>
       

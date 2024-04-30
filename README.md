@@ -26,11 +26,6 @@ We are utilizing the MERN stack:
 
 A future development is to make the website serverless (hosted on the cloud).
 
-## API Functionality
-
-- Google Authentication
-- ...
-
 # Structure
 
 ## File Structure
