@@ -1,76 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
 import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
+import { FaUpload } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const CreateFiles = () => {
-   // State to hold the file and the name
-   const [file, setFile] = useState(null);
-   const [fileName, setFileName] = useState('');
+    const [loading, setLoading] = useState(false);
 
-   // Function to handle file change
-   const handleFileChange = (e) => {
-       setFile(e.target.files[0]);
-   };
+    //navigate for going back to home
+    const navigate = useNavigate();
 
-   // Function to handle file name change
-   const handleFileNameChange = (e) => {
-       setFileName(e.target.value);
-   };
+    //states for file and filename
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState('');
 
-   // Function to handle form submission
-   const handleSubmit = async (e) => {
-       e.preventDefault();
+    const { enqueueSnackbar } = useSnackbar();
 
-       // Create a FormData object to hold the file and the name
-       const formData = new FormData();
-       formData.append('file', file);
-       formData.append('name', fileName);
+    //handle file change
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
 
-       try {
-           // Send the form data to the server
-           const response = await axios.post('http://localhost:5555/files/upload', formData, {
-               headers: {
-                   'Content-Type': 'multipart/form-data',
-               },
-           });
+    //handle file name change
+    const handleFileNameChange = (e) => {
+        setFileName(e.target.value);
+    };
 
-           // Handle the response from the server
-           console.log(response.data);
-           alert('File uploaded successfully!');
-       } catch (error) {
-           // Handle error
-           console.error('Error uploading file:', error);
-           alert('Error uploading file. Please try again.');
-       }
-   };
+    //form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-   return (
-       <div>
-           <h2>File Upload</h2>
-           <form onSubmit={handleSubmit}>
-               <div>
-                   <label>
-                       File Name:
-                       <input
-                           type="text"
-                           value={fileName}
-                           onChange={handleFileNameChange}
-                           required
-                       />
-                   </label>
-               </div>
-               <div>
-                   <label>
-                       File:
-                       <input type="file" onChange={handleFileChange} required />
-                   </label>
-               </div>
-               <button type="submit">Upload</button>
-           </form>
-       </div>
+        //formdata obj holds the data
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('name', fileName);
+
+        setLoading(true);
+        try {
+            //send formdata to server
+            const response = await axios.post('http://localhost:5555/files/upload', formData, {
+                headers: { 'Content-Type': 'multipart/form-data',},
+            });
+            setLoading(false);
+            enqueueSnackbar('File uploaded successfully', {variant: 'success'});
+            navigate('/');
+        } catch (error) {
+            // Handle error
+            setLoading(false);
+            console.error('Error uploading file:', error);
+            enqueueSnackbar('Error uploading file', {variant: 'error'});
+        }
+    };
+
+    return (
+    <div className='p-4'>
+        <HomeButton />
+        {loading ? (<Spinner />) : '' }
+
+        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
+            <h2 className='text-3xl my-4'>File Upload</h2>
+            <form onSubmit={handleSubmit}>
+                <div className='mb-4'>
+                    <label>
+                        File Name:
+                        <input
+                        className='border-2 border-blue-400 rounded-lg ml-8'
+                        type="text"
+                        value={fileName}
+                        onChange={handleFileNameChange}
+                        required
+                        />
+                    </label>
+                </div>
+                <div className='mb-4'>
+                    <label>
+                        File:
+                        <input 
+                        className='border-2 border-blue-400 rounded-lg ml-20' 
+                        type="file" 
+                        onChange={handleFileChange} 
+                        required />
+                    </label>
+                </div>
+                <div className='flex justify-center'>
+                    <button 
+                    type="submit"
+                    className='border-2 border-blue-400 rounded-lg text-yellow-500 bg-blue-100 size-10 flex justify-center items-center'>
+                        <FaUpload />
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
    );
 };
 

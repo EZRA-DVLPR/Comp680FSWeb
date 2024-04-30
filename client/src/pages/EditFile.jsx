@@ -6,8 +6,7 @@ import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 
 const EditFile = () => {
-
-  //required fields for adding to db
+  //filename required to update value in db
   const [filename, setFilename] = useState('');
 
   const [loading, setLoading] = useState(false);
@@ -39,7 +38,6 @@ const EditFile = () => {
       navigate('/');
     }).catch((err) => {
       setLoading(false);
-      //alert('An Error Occurred. Please Check Console');
       enqueueSnackbar('Error editing file information', {variant: 'error'});
       console.log(err);
     });
