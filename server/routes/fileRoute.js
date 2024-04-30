@@ -24,18 +24,28 @@ const upload = multer({ storage });
 // Upload file route
 router.post('/upload', upload.single('file'), async (req, res) => {
     try {
-        //contains entire file contents in a single buffer ==== req.file.buffer
-        const newFile = new modelFile({
-            filename: req.body.name,
-            filetype: req.file.mimetype,
-            filepath: req.file.path,
-        });
-        
+        //default path will be the given path "savedData/FILENAME"
+        var newFilePath = req.file.path;
+
         //compress if image
         if (req.file.mimetype.includes("image")) {
             //save compressed image
             await sharp(req.file.path).resize(200).toFile(`uploads/${req.file.originalname}`)
+
+            //update path if it was an image to "uploads/FILENAME"
+            newFilePath = `uploads/${req.file.originalname}`;
+
+            //delete the original file
+            await fs.promises.unlink(req.file.path);
         }
+
+        //contains entire file contents in a single buffer ==== req.file.buffer
+        const newFile = new modelFile({
+            filename: req.body.name,
+            filetype: req.file.mimetype,
+            filepath: newFilePath,
+        });
+        
         await newFile.save();
         res.status(201).json({ message: 'File uploaded successfully', file: newFile });
     } catch (err) {
@@ -110,11 +120,17 @@ router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
 
-        const result = await modelFile.findByIdAndDelete(id);
+        var result = await modelFile.findById(id);
 
         if (!result) {
             return res.status(404).json({message: 'File not found'});
         }
+
+        //delete from locally saved directories
+        await fs.promises.unlink(result.filepath);
+
+        //delete from db
+        result = await modelFile.findByIdAndDelete(id);
 
         return res.status(200).json({message: 'File deleted successfully'});
     } catch (err) {
