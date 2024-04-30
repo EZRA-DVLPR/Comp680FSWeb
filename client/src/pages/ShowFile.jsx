@@ -3,20 +3,10 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import HomeButton from '../components/HomeButton';
 import Spinner from '../components/Spinner';
-
-import {BiPaperPlane} from 'react-icons/bi'
+import Socials from '../components/Socials';
 
 const ShowFile = () => {
-  //pre-fill email contents
-  const recipient = '';
-  const subject = encodeURIComponent('Check out this cool file!');
-  const body = encodeURIComponent(`Check out this cool file: ${window.location.href}.\n\nThis file was found from FSW, a free file sharing website.`);
-  const mailToLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
-
-  //function to send email
-  const sendEmail = () => {
-    window.location.href = mailToLink;
-  };
+  
 
   //obtain list and loading state of page
   const [loadedFile, setFile] = useState({});
@@ -49,13 +39,7 @@ const ShowFile = () => {
         {/* empty space to fill horizonal line */}
         <div className='w-1/3'></div>
 
-        {/* Share the file via email button */}
-        <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg' onClick={sendEmail}>
-          Share via Email
-          <div className='flex justify-center'>
-            <BiPaperPlane />
-          </div>
-        </button>
+        
       </div>
 
       {/* Display contents of the file */}
@@ -103,6 +87,8 @@ const ShowFile = () => {
           </div>
         )
       }
+      <Socials /> 
+      
     </div>
   )
 }

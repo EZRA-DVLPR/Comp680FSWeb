@@ -5,10 +5,7 @@
 import Spinner from '../components/Spinner';
 import HomeButton from '../components/HomeButton';
 import ColorThemeButton from '../components/ColorTheme';
-
-import {
-    BsQrCode
-    } from 'react-icons/bs';
+import Socials from '../components/Socials';
 
 import {
     MdDownload,
@@ -16,17 +13,6 @@ import {
     MdLogin, //also logout
     MdMiscellaneousServices //settings
     } from 'react-icons/md';    
-
-//these are all fills. for outline do AiOutline_
-import {
-    AiFillDropboxSquare, //circle available too
-    AiFillFacebook,
-    AiFillInstagram,
-    AiFillLinkedin,
-    AiFillRedditSquare, //also available in square
-    AiFillTwitterSquare //also available in square
-    } from 'react-icons/ai'
-
 
 //these are all fills. but also available in solid
 import {
@@ -42,6 +28,7 @@ const Samples = () => {
             <HomeButton/>
             <Spinner />
             <ColorThemeButton />
+            <Socials />
 
             <div className='flex justify-between items-center'>
                 <table className='w-full'>
@@ -54,12 +41,6 @@ const Samples = () => {
                     </thead>
 
                     <tbody>
-
-                        <tr className='bg-white'>
-                            <td>Bs</td>
-                            <td>QrCode</td>
-                            <td><BsQrCode /></td>
-                        </tr>
 
                         <tr className='bg-gray-100'>
                             <td>Md</td>
@@ -89,42 +70,6 @@ const Samples = () => {
                             <td>Md</td>
                             <td>MiscellaneousServices</td>
                             <td><MdMiscellaneousServices /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Ai</td>
-                            <td>FillDropboxSquare</td>
-                            <td><AiFillDropboxSquare /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Ai</td>
-                            <td>FillFacebook</td>
-                            <td><AiFillFacebook /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Ai</td>
-                            <td>FillInstagram</td>
-                            <td><AiFillInstagram /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Ai</td>
-                            <td>FillLinkedin</td>
-                            <td><AiFillLinkedin /></td>
-                        </tr>
-
-                        <tr className='bg-white'>
-                            <td>Ai</td>
-                            <td>FillRedditSquare</td>
-                            <td><AiFillRedditSquare /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Ai</td>
-                            <td>FillTwitterSquare</td>
-                            <td><AiFillTwitterSquare /></td>
                         </tr>
 
                     </tbody>

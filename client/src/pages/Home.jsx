@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md';
 import FileTable from '../components/home/FileTable';
 import FileCard from '../components/home/FileCard';
 import ColorThemeButton from '../components/ColorTheme';
+import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 
 import {MdGridView, MdList} from 'react-icons/md';
