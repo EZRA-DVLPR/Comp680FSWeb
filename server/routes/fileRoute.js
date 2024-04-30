@@ -1,36 +1,37 @@
-import express from "express";
-import  { modelFile } from '../models/fileModel.js';
 import path from 'path';
+import express from "express";
+import multer from 'multer';
+import  { modelFile } from '../models/fileModel.js';
 
 const router = express.Router();
 
-// route for save a new file in db
-router.post('/', async (req, res) => {
+//multer setup => saves in `savedData`
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'savedData');
+    },
+    filename: (req, file, cb) => {
+        // Use the original file name or customize as you prefer
+        const customFileName = req.body.name || file.originalname;
+        cb(null, customFileName);
+    }
+});
+
+const upload = multer({ storage });
+
+// Upload file route
+router.post('/upload', upload.single('file'), async (req, res) => {
     try {
-        
-        //check if the user has send the proper data specified
-        if (!req.body.filename || !req.body.filedata || !req.body.filepath) {
-            return res.status(400).send({
-                message: 'Data received was incomplete. Data Addition Cancelled. Send all required fields: filename, filedata',
-            });
-        }
-        
-        //make a new instance of the file using mongo schema
-        const newFile = {
-            filename: req.body.filename,
-            filedata: req.body.filedata,
-            filepath: req.body.filepath,
-        };
-
-        //send data and wait for confirmation
-        const newfile = await modelFile.create(newFile);
-
-        //return confirmation that data was received
-        return res.status(201).send(newfile);
-
-    } catch(err) {
-        console.log(err.message)
-        res.status(500).send({message: err.message})
+        const newFile = new modelFile({
+            filename: req.body.name,
+            filetype: req.file.mimetype,
+            filepath: req.file.path,
+        });
+        await newFile.save();
+        res.status(201).json({ message: 'File uploaded successfully', file: newFile });
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -72,7 +73,7 @@ router.put('/:id', async (req, res) => {
     try {
 
         //check if the user has send the proper data specified
-        if (!req.body.filename || !req.body.filedata || !req.body.filepath) {
+        if (!req.body.filename || !req.body.filepath) {
             return res.status(400).send({
                 message: 'Data received was incomplete. Data Replacement Cancelled. Send all required fields: filename, filedata',
             });

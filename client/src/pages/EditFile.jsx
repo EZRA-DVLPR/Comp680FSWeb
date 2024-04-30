@@ -58,10 +58,6 @@ const EditFile = () => {
           <label className='text-xl mr-4 text-gray-600'>Filename</label>
           <input type='text' value={filename} onChange={(e) => setFilename(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
         </div>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-600'>Data</label>
-          <input type='text' value={filedata} onChange={(e) => setFileData(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
-        </div>
         <button className='p-2 bg-sky-300 m-8' onClick={handleEditFile}>Save</button>
       </div>
     </div>

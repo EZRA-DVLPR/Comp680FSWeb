@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import HomeButton from '../components/HomeButton';
@@ -6,54 +6,72 @@ import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 
 const CreateFiles = () => {
-  //required fields for adding to db
-  const [filename, setFilename] = useState('');
-  const [filedata, setFileData] = useState('');
+   // State to hold the file and the name
+   const [file, setFile] = useState(null);
+   const [fileName, setFileName] = useState('');
 
-  //loading with spinner
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+   // Function to handle file change
+   const handleFileChange = (e) => {
+       setFile(e.target.files[0]);
+   };
 
-  //snackbar for alerts
-  const { enqueueSnackbar } = useSnackbar();
+   // Function to handle file name change
+   const handleFileNameChange = (e) => {
+       setFileName(e.target.value);
+   };
 
-  const handleSaveFile = () => {
-    const data = {
-      filename,
-      filedata,
-    };
-    setLoading(true);
-    axios.post('http://localhost:5555/files', data).then(() => {
-      setLoading(false);
-      enqueueSnackbar('File added Successfully', { variant: 'success'});
-      navigate('/');
-    }).catch((err) => {
-      setLoading(false);
-      //alert('An Error Occurred. Please Check Console');
-      enqueueSnackbar('Error', {variant: 'error'});
-      console.log(err);
-    });
-  };
+   // Function to handle form submission
+   const handleSubmit = async (e) => {
+       e.preventDefault();
 
-  return (
-    <div className='p-4'>
-      <HomeButton/>
-      {/* can use space-x-4 to separate the elements within this div/section thing. is an alternative to always using margin top and margin bottom */}
-      <h1 className='text-3xl my-4'>Create File</h1>
-      {loading ? (<Spinner />) : '' }
-      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-600'>Filename</label>
-          <input type='text' value={filename} onChange={(e) => setFilename(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
-        </div>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-600'>File</label>
-          <input type='file' value={filedata} onChange={(e) => setFileData(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
-        </div>
-        <button className='p-2 bg-sky-300 m-8' onClick={handleSaveFile}>Save</button>
-      </div>
-    </div>
-  )
-}
+       // Create a FormData object to hold the file and the name
+       const formData = new FormData();
+       formData.append('file', file);
+       formData.append('name', fileName);
 
-export default CreateFiles
+       try {
+           // Send the form data to the server
+           const response = await axios.post('http://localhost:5555/files/upload', formData, {
+               headers: {
+                   'Content-Type': 'multipart/form-data',
+               },
+           });
+
+           // Handle the response from the server
+           console.log(response.data);
+           alert('File uploaded successfully!');
+       } catch (error) {
+           // Handle error
+           console.error('Error uploading file:', error);
+           alert('Error uploading file. Please try again.');
+       }
+   };
+
+   return (
+       <div>
+           <h2>File Upload</h2>
+           <form onSubmit={handleSubmit}>
+               <div>
+                   <label>
+                       File Name:
+                       <input
+                           type="text"
+                           value={fileName}
+                           onChange={handleFileNameChange}
+                           required
+                       />
+                   </label>
+               </div>
+               <div>
+                   <label>
+                       File:
+                       <input type="file" onChange={handleFileChange} required />
+                   </label>
+               </div>
+               <button type="submit">Upload</button>
+           </form>
+       </div>
+   );
+};
+
+export default CreateFiles;
