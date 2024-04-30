@@ -6,11 +6,11 @@ import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 
 const CreateFiles = () => {
-
   //required fields for adding to db
   const [filename, setFilename] = useState('');
   const [filedata, setFileData] = useState('');
 
+  //loading with spinner
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -47,8 +47,8 @@ const CreateFiles = () => {
           <input type='text' value={filename} onChange={(e) => setFilename(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
         </div>
         <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-600'>Data</label>
-          <input type='text' value={filedata} onChange={(e) => setFileData(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
+          <label className='text-xl mr-4 text-gray-600'>File</label>
+          <input type='file' value={filedata} onChange={(e) => setFileData(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
         </div>
         <button className='p-2 bg-sky-300 m-8' onClick={handleSaveFile}>Save</button>
       </div>

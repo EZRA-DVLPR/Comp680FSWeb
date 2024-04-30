@@ -6,6 +6,7 @@ import { MdOutlineAddBox } from 'react-icons/md';
 import FileTable from '../components/home/FileTable';
 import FileCard from '../components/home/FileCard';
 import ColorThemeButton from '../components/ColorTheme';
+import { useSnackbar } from 'notistack';
 
 import {MdGridView, MdList} from 'react-icons/md';
 
@@ -15,6 +16,9 @@ const Home = () => {
 
     //how to display the data: table or card views
     const [showType, setShowType] = useState('');
+
+    //snackbar for displaying changes
+    const { enqueueSnackbar } = useSnackbar();
 
     //processing for data retrieval
     useEffect(() => {
@@ -46,20 +50,20 @@ const Home = () => {
     //handle changes to showType
     const handleShowTypeChange = (event) => {
         //retrieve value of selection
-        const showTypeSelected = event.target.value;
+        const showTypeSelected = event.currentTarget.value;
 
         //update only if it's different than the stored selection
         if (localStorage.getItem('showType') != showTypeSelected) {
             //change showType and store the new showType in localStorage
             setShowType(showTypeSelected);
             localStorage.setItem('showType', showTypeSelected);
+            enqueueSnackbar(`Display changed to: ${showTypeSelected} View`);
         }
     };
 
     //what gets returned to user
     return (
         <div className='p-4'>
-            {/* light/dark mode button toggle */}
             
             <div className="flex justify-between items-center w-full">
             {/* Flex container for the first two buttons */}
@@ -67,7 +71,7 @@ const Home = () => {
                 {/* Table button */}
                 <button
                     className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
-                    value="table"
+                    value="Table"
                     onClick={handleShowTypeChange}
                 >
                     Table
@@ -79,17 +83,17 @@ const Home = () => {
                 {/* Card button */}
                 <button
                     className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
-                    value="card"
-                    onClick={handleShowTypeChange}
+                    value="Card" onClick={handleShowTypeChange}
                 >
                     Card
                     <div className="flex justify-center">
                         <MdGridView />
                     </div>
                 </button>
+                
             </div>
             
-            {/* ColorThemeButton on the right side */}
+            {/* ColorThemeButton on the right side */}            
             <ColorThemeButton />
         </div>
             <div className='flex justify-between items-center'>
@@ -102,7 +106,7 @@ const Home = () => {
             {/*//after loading the first div, check loading and decide layout*/}
 
             {loading ? (<Spinner />) :
-                showType === 'table' ? (<FileTable files={files} />) : (<FileCard files={files} />)
+                showType === 'Table' ? (<FileTable files={files} />) : (<FileCard files={files} />)
             }
         </div>
     );

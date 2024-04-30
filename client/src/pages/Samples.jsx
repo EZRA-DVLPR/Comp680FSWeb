@@ -10,8 +10,7 @@ import {
     BsQrCode
     } from 'react-icons/bs';
 
-import { 
-    MdAttachFile,
+import {
     MdDownload,
     MdDownloadDone,
     MdLogin, //also logout
@@ -60,12 +59,6 @@ const Samples = () => {
                             <td>Bs</td>
                             <td>QrCode</td>
                             <td><BsQrCode /></td>
-                        </tr>
-
-                        <tr className='bg-gray-100'>
-                            <td>Md</td>
-                            <td>AttachFile</td>
-                            <td><MdAttachFile /></td>
                         </tr>
 
                         <tr className='bg-gray-100'>
