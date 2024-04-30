@@ -1,4 +1,6 @@
-import React from 'react'
+import { useContext } from 'react';
+import React from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 //these are all fills. for outline do AiOutline_
 import {
@@ -13,6 +15,9 @@ import {
 import { BiPaperPlane } from 'react-icons/bi'
 
 const Socials = () => {
+  //get lightmode theme from context
+  const { isLightMode } = useContext(ThemeContext);
+
   //pre-fill email contents
   const recipient = '';
   const subject = encodeURIComponent('Check out this cool file!');
@@ -25,7 +30,7 @@ const Socials = () => {
   };
   
   return (
-    <div className={('flex justify-left text-5xl text-gray-500')}>
+    <div className={isLightMode ? 'flex justify-left text-5xl text-gray-500' : 'flex justify-left text-5xl text-gray-300'}>
       <button>
         <AiFillDropboxSquare />
       </button>
