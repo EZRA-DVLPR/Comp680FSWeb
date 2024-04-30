@@ -1,10 +1,7 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import { FaFile } from "react-icons/fa";
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { useContext } from 'react';
 
 const FileModal = ({file, onClose}) => {
-  const { isLightMode } = useContext(ThemeContext);
   
   return (
     <div className='fixed bg-black bg-opacity-60 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center' onClick={onClose}>

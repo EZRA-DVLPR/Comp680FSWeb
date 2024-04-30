@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import Spinner from '../components/Spinner';
 import { useSnackbar } from 'notistack';
 import { FaUpload } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 const CreateFiles = () => {
+    const { isLightMode } = useContext(ThemeContext);
+
     const [loading, setLoading] = useState(false);
 
     //navigate for going back to home
@@ -59,15 +62,18 @@ const CreateFiles = () => {
         <Header />
         {loading ? (<Spinner />) : '' }
 
-        <h2 className='text-3xl my-4 justify-center flex'>File Upload</h2>
+        <h2 className={isLightMode == true ? 'text-gray-800 text-3xl my-4 justify-center flex' :  'text-gray-200 text-3xl my-4 justify-center flex'}>
+            File Upload
+        </h2>
+        
         <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
             
             <form onSubmit={handleSubmit}>
                 <div className='mb-4'>
-                    <label>
+                    <label className={isLightMode ? 'text-gray-800' : 'text-gray-200'}>
                         File Name:
                         <input
-                        className='border-2 border-blue-400 rounded-lg ml-8'
+                        className={isLightMode == true ? 'border-2 border-blue-400 rounded-lg ml-8 w-[338px]' :  'border-2 border-blue-400 rounded-lg ml-8 w-[338px]'}
                         type="text"
                         value={fileName}
                         onChange={handleFileNameChange}
@@ -76,7 +82,7 @@ const CreateFiles = () => {
                     </label>
                 </div>
                 <div className='mb-4'>
-                    <label>
+                    <label className={isLightMode ? 'text-gray-800' : 'text-gray-200'}>
                         File:
                         <input 
                         className='border-2 border-blue-400 rounded-lg ml-20' 
