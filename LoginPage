@@ -1,0 +1,18 @@
+.login-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.login-input {
+    margin-bottom: 10px;
+}
+
+.login-button {
+    background-color: blue;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
