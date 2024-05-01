@@ -51,7 +51,7 @@ const EditFile = () => {
       <Header />
       <h1 className={isLightMode == true ? 'text-gray-800 text-3xl my-4 w-1/3 ml-10' :  'text-gray-200 text-3xl my-4 w-1/3 ml-10'}>Edit File</h1>
       {loading ? (<Spinner />) : '' }
-      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
+      <div className='flex flex-col border-2 border-sky-400 rounded-xl w-full max-w-md p-4 mx-auto'>
         <div className='my-4'>
           <label className={isLightMode ? 'text-xl mr-4 text-gray-800' : 'text-xl mr-4 text-gray-200'}>Filename</label>
           <input type='text' value={filename} onChange={(e) => setFilename(e.target.value)} className='border-2 border-gray-500 px-4 py-2 w-full'/>
