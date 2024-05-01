@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import Header from '../components/Header';
+import { ThemeContext } from '../contexts/ThemeContext';
+
 
 const DeleteFile = () => {
+  const { isLightMode } = useContext(ThemeContext);
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -30,13 +33,13 @@ const DeleteFile = () => {
   return (
     <div className='p-4'>
       <Header />
-      <h1 className='text-3xl my-4'>
+      <h1 className={isLightMode == true ? 'text-gray-800 text-3xl my-4 w-1/3 ml-10' :  'text-gray-200 text-3xl my-4 w-1/3 ml-10'}>
         Delete File
       </h1>
       {loading ? (<Spinner/>) : ('')}
 
       <div className='flex flex-col items-center border-2 border-sky-400 rounded-xl w-[600px] p-8 mx-auto'>
-        <h3 className='text-2xl'>
+        <h3 className={isLightMode ? 'text-gray-800' : 'text-gray-200'}>
           Are you sure you want to delete this file?
         </h3>
 
