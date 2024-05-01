@@ -67,12 +67,8 @@ const ShowFile = () => {
       
       <div className='items-center w-screen flex'>
 
-        {/* title for page */}
         <h1 className={isLightMode == true ? 'text-gray-800 text-3xl my-4 w-1/3 ml-10' :  'text-gray-200 text-3xl my-4 w-1/3 ml-10'} >File Information</h1>
         
-        {/* empty space to fill horizonal line */}
-        <div className='w-1/3'></div>
-
       </div>
 
       {/* Display contents of the file */}
