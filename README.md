@@ -2,7 +2,7 @@ This project is a React-based web application that implements Firebase authentic
 It utilizes Material-UI for the user interface components to ensure a responsive and modern design. 
 This README provides setup instructions and additional information to help all team members get started with development in Visual Studio Code.
 
-Project Structure
+Project structure
 /
 ├── src/
 │   ├── components/           # Shared React components
@@ -15,6 +15,7 @@ Project Structure
 ├── public/
 │   └── index.html            # Entry point HTML file
 └── package.json              # npm dependencies and scripts
+
 
 
 Setup Instructions
