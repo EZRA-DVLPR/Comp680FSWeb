@@ -1,0 +1,12 @@
+Business Goal/Objective for Sprint 1:
+
+Define the specific business goal or objective for this sprint,
+aligning with the overall objective of the app but focusing on a particular aspect or feature
+
+User Stories:
+Create user stories that encapsulate the functionalities and features to be implemented in sprint 1
+
+technical tasks:
+break down each user story into detailed technical tasks, outlining the dev work reqd to fulfill the stories
+
+due by the end of the lab on Wed. March 13.
