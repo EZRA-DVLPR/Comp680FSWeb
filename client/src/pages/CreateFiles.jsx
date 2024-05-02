@@ -31,7 +31,7 @@ const CreateFiles = () => {
 
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:5555/files/upload', formData, {
+            const response = await axios.post(`${process.env.HOST_URI ?? 'http://localhost:5555'}/files/upload`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             setLoading(false);

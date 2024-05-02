@@ -24,7 +24,7 @@ const ShowFile = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5555/files/${id}`).then((res) => {
+    axios.get(`${process.env.HOST_URI ?? 'http://localhost:5555'}/files/${id}`).then((res) => {
       setFile(res.data);
       console.log(res.data);
       setLoading(false);
@@ -40,7 +40,7 @@ const ShowFile = () => {
     const link = document.createElement('a');
 
     //connect to server
-    link.href = `http://localhost:5555/files/download/${id}`;
+    link.href = `${process.env.HOST_URI ?? 'http://localhost:5555'}/files/download/${id}`;
 
     //set download to filename
     link.download = loadedFile.filename;

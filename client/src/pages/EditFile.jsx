@@ -20,7 +20,7 @@ const EditFile = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5555/files/${id}`).then((res) => {
+    axios.get(`${process.env.HOST_URI ?? 'http://localhost:5555'}/files/${id}`).then((res) => {
       setFilename(res.data.filename);
       setLoading(false);
     }).catch((err) => {
@@ -35,7 +35,7 @@ const EditFile = () => {
       filename,
     };
     setLoading(true);
-    axios.put(`http://localhost:5555/files/${id}`, data).then(() => {
+    axios.put(`${process.env.HOST_URI ?? 'http://localhost:5555'}/files/${id}`, data).then(() => {
       setLoading(false);
       enqueueSnackbar('File edited successfully', {variant: 'success'});
       navigate('/');
