@@ -11,7 +11,7 @@ export default ({mode}) => {
       host: '0.0.0.0', // or true
     },
     define: {
-        HOST_URI: process.env.HOST_URI,
+        HOST_URI: "http://comp680fsweb.duckdns.org:5555",
     },
   })
 }
