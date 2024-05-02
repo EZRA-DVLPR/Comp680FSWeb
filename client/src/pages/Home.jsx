@@ -29,7 +29,7 @@ const Home = () => {
         setLoading(true);
 
         //establish connection to server
-        axios.get(`${process.env.HOST_URI ?? 'http://localhost:5555'}/files`).then((res) => {
+        axios.get(`${HOST_URI ?? 'http://localhost:5555'}/files`).then((res) => {
             //if successful then receive the data and stop loading
             setFiles(res.data.data);
             setLoading(false);

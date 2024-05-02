@@ -18,7 +18,7 @@ const DeleteFile = () => {
 
   const handleDeleteFile = () => {
     setLoading(true);
-    axios.delete(`${process.env.HOST_URI ?? 'http://localhost:5555'}/files/${id}`).then(() => {
+    axios.delete(`${HOST_URI ?? 'http://localhost:5555'}/files/${id}`).then(() => {
       setLoading(false);
       enqueueSnackbar('File Deleted successfully', {variant: 'success'});
       navigate('/');

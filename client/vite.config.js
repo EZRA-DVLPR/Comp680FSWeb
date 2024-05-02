@@ -10,7 +10,7 @@ export default defineConfig(({ command, mode }) => {
       host: '0.0.0.0', // or true
     },
     define: {
-        'process.env.HOST_URI': JSON.stringify(env.HOST_URI),
+        HOST_URI: JSON.stringify(env.HOST_URI),
     },
   }
 })
